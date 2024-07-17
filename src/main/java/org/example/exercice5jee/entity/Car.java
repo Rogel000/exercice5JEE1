@@ -8,10 +8,10 @@ import java.time.LocalDate;
 public class Car {
     private long id;
     private String brand;
-    private String year;
+    private int year;
     private String color;
 
-    public Car(long id, String brand, String year, String color) {
+    public Car(long id, String brand, int year, String color) {
         this.id = id;
         this.brand = brand;
         this.year = year;
@@ -38,11 +38,11 @@ public class Car {
         this.brand = brand;
     }
 
-    public String getYear() {
+    public int getYear() {
         return year;
     }
 
-    public void setYear(String year) {
+    public void setYear(int year) {
         this.year = year;
     }
 
