@@ -29,13 +29,14 @@ public class CarService {
         getCarList().removeIf(car -> car.getId() == id);
     }
 
-    public void updateCar(long id, String brand, int year, String color) {
+    public Car updateCar(long id, String brand, int year, String color) {
         Car carToUpdate = getById(id);
         if (carToUpdate != null) {
             carToUpdate.setBrand(brand);
             carToUpdate.setYear(year);
             carToUpdate.setColor(color);
         }
+        return carToUpdate;
     }
 
 }
