@@ -3,13 +3,16 @@ package org.example.exercice5jee.services;
 import jakarta.enterprise.context.ApplicationScoped;
 import org.example.exercice5jee.entity.Car;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @ApplicationScoped
 public class CarService {
+    private List<Car> carList = new ArrayList<>();
 
-    public Car createCar(Long id, String brand, int year, String color) {
-        return new Car(id, brand, year, color);
+    public void createCar(long id, String brand, int year, String color) {
+        Car car = new Car(id, brand, year, color);
+        carList.add(car);
     }
 
     public List<Car> getCarList() {
