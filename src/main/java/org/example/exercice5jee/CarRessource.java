@@ -9,6 +9,8 @@ import org.example.exercice5jee.services.CarService;
 import java.util.List;
 
 @Path("/car")
+@Produces(MediaType.APPLICATION_JSON)
+@Consumes(MediaType.APPLICATION_JSON)
 public class CarRessource {
 
     private final CarService carService;
@@ -19,22 +21,20 @@ public class CarRessource {
     }
 
     @GET
-    @Produces(MediaType.APPLICATION_JSON)
     public List<Car> getAllCars() {
         return carService.getCarList();
     }
 
     @GET
     @Path("/{id}")
-    @Produces(MediaType.APPLICATION_JSON)
     public Car getCarById(@PathParam("id") long id) {
         return carService.getById(id);
     }
 
     @POST
-    @Consumes(MediaType.APPLICATION_JSON)
     public Car addCar(Car car) {
-        return carService.createCar(5L, "Renault",2018,"bleu");
+        carService.createCar(car.getId(), car.getBrand(), car.getYear(), car.getColor());
+        return car;
     }
 
     @DELETE
@@ -45,7 +45,6 @@ public class CarRessource {
 
     @PUT
     @Path("{id}")
-    @Consumes(MediaType.APPLICATION_JSON)
     public Car updateCar(@PathParam("id") long id, Car car) {
         car.setId(id);
         return carService.updateCar(car.getId(), car.getBrand(), car.getYear(), car.getColor());
